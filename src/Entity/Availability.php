@@ -6,6 +6,8 @@ use App\Repository\AvailabilityRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: AvailabilityRepository::class)]
 class Availability
 {
@@ -15,15 +17,20 @@ class Availability
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Assert\NotNull()]
     private ?\DateTimeImmutable $start_date = null;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[Assert\NotNull()]
     private ?\DateTimeImmutable $end_date = null;
 
     #[ORM\Column]
+    #[Assert\NotNull()]
+    #[Assert\PositiveOrZero()]
     private ?float $price = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
     private ?string $status = null;
 
     #[ORM\ManyToOne(inversedBy: 'availabilities')]
