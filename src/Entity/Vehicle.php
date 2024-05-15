@@ -28,8 +28,10 @@ class Vehicle
     /**
      * @var Collection<int, Availability>
      */
-    #[ORM\OneToMany(targetEntity: Availability::class, mappedBy: 'vehicle', orphanRemoval: true,  fetch:"EAGER")]
+    #[ORM\OneToMany(targetEntity: Availability::class, mappedBy: 'vehicle', orphanRemoval: true)]
     private Collection $availabilities;
+
+    private ?float $price = null;
 
     public function __construct()
     {
@@ -94,4 +96,17 @@ class Vehicle
 
         return $this;
     }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
 }

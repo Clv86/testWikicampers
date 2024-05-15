@@ -19,6 +19,8 @@ class AvailabilityRepository extends ServiceEntityRepository
     public function findByDateRange($startDate, $endDate)
     {
         $qb = $this->createQueryBuilder('a')
+            ->select('a', 'v')
+            ->join('a.vehicle', 'v')
             ->where('a.start_date <= :start_date')
             ->andWhere('a.end_date >= :end_date')
             ->setParameter('start_date', $startDate)
