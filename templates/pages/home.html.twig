@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<div class="container mt-4">
 <div class="jumbotron">
-  <h1 class="display-4">Hello, world!</h1>
+  <h1 class="display-4">Test Wikicampers</h1>
   <p class="lead">Test Wikicamper</p>
   <hr class="my-4">
   <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Ajouter un véhicule</a>
+    <a class="btn btn-primary btn-lg" href="vehicle" role="button">Liste des véhicules</a>
+    <a class="btn btn-primary btn-lg" href="vehicle/nouveau" role="button">Ajouter un véhicule</a>
+    <a class="btn btn-primary btn-lg" href="availability" role="button">disponibilités</a>
+    <a class="btn btn-primary btn-lg" href="availability/nouveau" role="button">Ajouter une disponibilité</a>
+    <a class="btn btn-primary btn-lg" href="availability/search" role="button">rechercher une disponibilité</a>
   </p>
+</div>
 </div>
 {% endblock %}

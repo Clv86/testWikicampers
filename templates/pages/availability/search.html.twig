@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+
+        <h1 class="mt-4">Recherche d'une disponibilité</h1>
+
+        {{ form_start(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.start_date) }}
+            {{ form_widget(form.start_date) }}
+            <div class="form-error">
+                {{ form_errors(form.start_date) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.end_date) }}
+            {{ form_widget(form.end_date) }}
+            <div class="form-error">
+                {{ form_errors(form.end_date) }}
+            </div>
+        </div>   
+    
+        <div class="form-group">
+            {{ form_row(form.submit) }}
+        </div>
+    
+        {{ form_end(form) }}
+    </div>
+
+        <div class="container mt-4">
+            {% if number > 0 %}
+                <h1>Liste des véhicules</h1>
+{#                 <div class="count mt-4">
+                    <h4>Il y a {{ allVehicles|length }} véhicules au total.</h4>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Marque</th>
+                            <th scope="col">Modèle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for vehicle in allVehicles %}
+                            <tr class="table-primary mt-4">
+                                <th scope="row">{{ vehicle.id }}</th>
+                                <td>{{ vehicle.brand }}</td>
+                                <td>{{ vehicle.model }}</td>
+                            </tr>
+                        {% endfor %} #}
+{#                     </tbody>
+                </table>
+                <div class="navigation d-flex justify-content-center">
+                </div>
+            {% else %}
+                <h4>Il n'y a pas de véhicule.</h4> #}
+            {% endif %}        
+        </div>
+{% endblock %}

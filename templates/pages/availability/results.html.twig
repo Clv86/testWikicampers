@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container mt-4">
+                        {% if not vehicles is same as ([]) %}
+            <h1>Liste des véhicules</h1>
+                {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                        {{ message }}
+                </div>
+            {% endfor %}
+                <div class="count mt-4">
+
+                    <h4>Il y a {{ vehicles.getTotalItemCount }} véhicules au total.</h4>
+                </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Marque</th>
+                    <th scope="col">Modèle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vehicle in vehicles %}
+                        <tr class="table-primary mt-4">
+                            <th scope="row">{{ vehicle.id }}</th>
+                            <td>{{ vehicle.brand }}</td>
+                            <td>{{ vehicle.model }}</td>
+                        {% endfor %}
+                </tbody>
+            </table>
+            <div class="navigation d-flex justify-content-center">
+                {{ knp_pagination_render(vehicles) }}
+            </div>
+                {% else %}
+            <h4>Il y n'y a pas véhicule.</h4>
+        {% endif %}
+    </div>
+{% endblock %}

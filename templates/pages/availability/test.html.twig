@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h2>Résultats :</h2>
+{#             <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Marque</th>
+                    <th scope="col">Modèle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if availableVehicles is not empty %}
+                    {% for availableVehicle in availableVehicles %}
+                        <tr class="table-primary mt-4">
+                            <th scope="row">{{ availableVehicle.id }}</th>
+                            <td>{{ availableVehicle.brand }}</td>
+                            <td>{{ availableVehicle.model }}</td>
+                        {% endfor %}
+                {% else %}
+                    <p>Aucune voiture disponible à la date spécifiée.</p>
+                {% endif %}
+                </tbody>
+            </table> #}
+{% endblock %}

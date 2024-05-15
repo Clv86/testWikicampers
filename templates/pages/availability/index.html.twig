@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}test Wikicampers - Liste des véhicules{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        {% if not availabilities is same as ([]) %}
+            <h1>Liste des véhicules</h1>
+
+            <a href="{{ path('availability.new' )}}" class="btn btn-primary">Ajouter une disponibilité</a>
+                {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                        {{ message }}
+                </div>
+            {% endfor %}
+                <div class="count mt-4">
+
+                    <h4>Il y a {{ availabilities.getTotalItemCount }} véhicules au total.</h4>
+                </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Date de début</th>
+                    <th scope="col">Date de fin</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for availability in availabilities %}
+                        <tr class="table-primary mt-4">
+                            <th scope="row">{{ availability.id }}</th>
+                            <td>{{ availability.formattedStartDate }}</td>
+                            <td>{{ availability.formattedEndDate }}</td>
+                            <td>{{ availability.price }}</td>
+                              <td>
+                                <a href="{{ path('availability.edit', { id: availability.id })}}" class="btn btn-info">Modifier</a>
+                            </td> 
+                            <td>
+                                <a href="{{ path('availability.delete', { id: availability.id })}}" class="btn btn-warning">Supprimer</a>
+                            </td> 
+                        {% endfor %}
+                </tbody>
+            </table>
+            <div class="navigation d-flex justify-content-center">
+                {{ knp_pagination_render(availabilities) }}
+            </div>
+        {% else %}
+            <h4>Il y n'y a pas de disponibilités.</h4>
+        {% endif %}        
+    </div>
+{% endblock %}

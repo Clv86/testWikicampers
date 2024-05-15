@@ -28,7 +28,7 @@ class Vehicle
     /**
      * @var Collection<int, Availability>
      */
-    #[ORM\OneToMany(targetEntity: Availability::class, mappedBy: 'vehicle', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Availability::class, mappedBy: 'vehicle', orphanRemoval: true,  fetch:"EAGER")]
     private Collection $availabilities;
 
     public function __construct()
