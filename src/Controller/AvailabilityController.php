@@ -116,7 +116,7 @@ class AvailabilityController extends AbstractController
                 'success',
                 'Disponibilité créée !'
             );
-            return $this->redirectToRoute('vehicle.index');
+            return $this->redirectToRoute('availability.index');
         }
 
         return $this->render('pages/availability/new.html.twig', [
