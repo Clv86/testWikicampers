@@ -34,19 +34,19 @@ Plus d'informations sur cette configuration ici : https://www.doctrine-project.o
 
 Installez les dépendances avec la commande : 
 
-### 'composer install'
+### `composer install`
 
 Créez la base de données correspondant au projet : 
 
-### 'php bin/console doctrine:database:create'
+### `php bin/console doctrine:database:create`
 
 Créez les tableaux du projet dans la base de données :
 
-### 'php bin/console doctrine:migrations:migrate'
+### `php bin/console doctrine:migrations:migrate`
 
 Démarrez le serveur avec : 
 
-### 'symfony server:start'
+### `symfony server:start`
 
 Le projet est lancé !
 
