@@ -15,7 +15,7 @@ L'application est prévue pour être testée en local.
 
 Par manque de temps, je n'ai pas implémenté les deux points bonus, ni certains détails qui rendraient le modèle actuel plus optimisé :
 - Dans l'entité Availability, j'ai donné à status une valeur string plutôt que boolean, facilitant l'ajout plus tard au site d'autres options que "Disponible" ou "Non Disponible". Cependant, dans l'envoi du formulaire pour ajouter une disponibilité, j'ai mis un input 'Disponible' qui peut porter à confusion car l'ajout d'une disponibilité sous-entend déjà que l'objet est disponible.
-- Dans ce même formulaire pour ajouter une disponibilité, on choisit le véhicule en fonction de son id. Il serait plus judicieux d'avoir une input plus clair où on choisirait le véhicule en fonction de "id - marque - modèle', en récupérant le véhicule à partir de son id de liaison.
+- Dans ce même formulaire pour ajouter une disponibilité, on choisit le véhicule en fonction de son id. Il serait plus judicieux d'avoir un input plus clair où on choisirait le véhicule en fonction de "id - marque - modèle', en récupérant le véhicule à partir de son id de liaison.
 - Au fixture générant des véhicules pourrait s'ajouter un fixture générant des disponibilités pour faciliter les tests.
   
 # Configuration
