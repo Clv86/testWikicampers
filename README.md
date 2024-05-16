@@ -29,7 +29,7 @@ Pour lancer ce projet, il est nécessaire d'installer :
 
 Ces installations sont nécessaires pour l'installation d'un projet symfony. Plus de détails sur l'installation de Symfony ici : https://symfony.com/doc/current/setup.html
 
-Ensuite, dans .env à la racine du projet, renseignez votre serveur (exemple : "DATABASE_URL="mysql://pseudonyme:motdepasse@127.0.0.1:3306/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4") 
+Ensuite, dans .env à la racine du projet, renseignez votre serveur (exemple : "DATABASE_URL="mysql://pseudonyme:motdepasse@127.0.0.1:3306/app?serverVersion=10.11.2-MariaDB&charset=utf8mb4"). 
 Plus d'informations sur cette configuration ici : https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url
 
 ## Fixtures
