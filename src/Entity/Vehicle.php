@@ -25,9 +25,6 @@ class Vehicle
     #[Assert\NotBlank()]
     private ?string $model = null;
 
-    /**
-     * @var Collection<int, Availability>
-     */
     #[ORM\OneToMany(targetEntity: Availability::class, mappedBy: 'vehicle', orphanRemoval: true)]
     private Collection $availabilities;
 
@@ -67,9 +64,6 @@ class Vehicle
         return $this;
     }
 
-    /**
-     * @return Collection<int, Availability>
-     */
     public function getAvailabilities(): Collection
     {
         return $this->availabilities;
@@ -88,7 +82,6 @@ class Vehicle
     public function removeAvailability(Availability $availability): static
     {
         if ($this->availabilities->removeElement($availability)) {
-            // set the owning side to null (unless already changed)
             if ($availability->getVehicle() === $this) {
                 $availability->setVehicle(null);
             }

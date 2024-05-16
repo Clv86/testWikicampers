@@ -66,21 +66,12 @@ class Availability
 
         return $this;
     }
-    /**
-     * Get the start date.
-     * 
-     * @return DateTimeImmutable|null
-     */
+
     public function getFormattedStartDate(): ?string
     {
         return $this->start_date ? $this->start_date->format('Y-m-d') : null;
     }
 
-    /**
-     * Get the end date.
-     * 
-     * @return DateTimeImmutable|null
-     */
     public function getFormattedEndDate(): ?string
     {
         return $this->end_date ? $this->end_date->format('Y-m-d') : null;

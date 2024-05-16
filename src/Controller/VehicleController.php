@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class VehicleController extends AbstractController
 {
-    #[Route('/vehicle', name: 'vehicle.index', methods: ['GET'])]
+    #[Route('/vehicule', name: 'vehicle.index', methods: ['GET'])]
     public function index(VehicleRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
         $vehicles = $paginator->paginate(
@@ -27,7 +27,7 @@ class VehicleController extends AbstractController
         ]);
     }
 
-    #[Route('/vehicle/nouveau', 'vehicle.new', methods: ['GET', 'POST'])]
+    #[Route('/vehicule/nouveau', 'vehicle.new', methods: ['GET', 'POST'])]
     public function new(
         Request $request,
         EntityManagerInterface $manager

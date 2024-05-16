@@ -15,20 +15,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Tools\Pagination\Paginator as PaginationPaginator;
-use Knp\Component\Pager\Paginator;
 
 class AvailabilityController extends AbstractController
 {
-    private $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
-
-    #[Route('availability', name: 'availability.index', methods: ['GET'])]
+    #[Route('/disponibilite', name: 'availability.index', methods: ['GET'])]
     public function index(AvailabilityRepository $repository, PaginatorInterface $paginator, Request $request) : Response {
         $availabilities = $paginator->paginate(
             $repository->findAll(),
@@ -40,7 +31,7 @@ class AvailabilityController extends AbstractController
         ]);
     }
 
-    #[Route('/availability/search', name: 'availability.search', methods: ['GET', 'POST'])]
+    #[Route('/disponibilite/recherche', name: 'availability.search', methods: ['GET', 'POST'])]
     public function search(AvailabilityRepository $availabilityRepository,
         Request $request,
         SessionInterface $session
@@ -60,29 +51,17 @@ class AvailabilityController extends AbstractController
             $availabilities = $qb->getQuery()->getResult();
 
             $priceMapping = [];
-            $prices = [];
-            $vehicles = [];
 
             foreach ($availabilities as $availability){
                 $price = $availability->getPrice();
                 $vehicleId = $availability->getVehicle()->getId();
 
                 $priceMapping[$vehicleId] = $price;
-                // $vehicles[$vehicle->getId()] = $vehicle;
             }
-            // $filteredVehicles = array_values($vehicles);
             $filteredVehicles = array_map(
                 fn($availability) => $availability->getVehicle(),
                 $availabilities
             );
-            
-            // foreach ($filteredVehicles as $vehicleId => $vehicle) {
-            //     // Vérifie si l'index existe dans le tableau $prices
-            //     if (isset($prices[$vehicleId])) {
-            //         // Définit le prix pour le véhicule en utilisant la méthode setPrice()
-            //         $vehicle->setPrice($prices[$vehicleId]);
-            //     }
-            // }
             
             foreach ($filteredVehicles as $vehicle) {
                 $vehicleId = $vehicle->getId();
@@ -91,7 +70,6 @@ class AvailabilityController extends AbstractController
                 }
             }
             
-            // dd($filteredVehicles);
             $session->set('search_data', [
                 'filteredVehicles' => $filteredVehicles,
             ]);
@@ -104,12 +82,11 @@ class AvailabilityController extends AbstractController
         ]);
     }
 
-    #[Route('/availability/results', name: 'availability.results', methods: ['GET'])]
-    public function test(PaginatorInterface $paginator, SessionInterface $session, AvailabilityRepository $availabilityRepository, VehicleRepository $repository, Request $request) : Response {
+    #[Route('/disponibilite/resultat', name: 'availability.results', methods: ['GET'])]
+    public function results(PaginatorInterface $paginator, SessionInterface $session, Request $request) : Response {
         $searchData = $session->get('search_data', []);
         $filteredVehicles = $searchData['filteredVehicles'] ?? [];
 
-        // $vehicleIds = array_map(fn($vehicle) => $vehicle->getId(), $filteredVehicles);
         $vehicles = $paginator->paginate(
             $filteredVehicles,
             $request->query->getInt('page', 1),
@@ -121,7 +98,7 @@ class AvailabilityController extends AbstractController
         ]);
     }
 
-    #[Route('/availability/nouveau', name: 'availability.new')]
+    #[Route('/disponibilite/nouveau', name: 'availability.new')]
     public function new(Request $request, EntityManagerInterface $manager): Response
     {
         $availability = new Availability();
@@ -147,7 +124,7 @@ class AvailabilityController extends AbstractController
         ]);
     }
 
-    #[Route('/availability/edition/{id}', 'availability.edit', methods: ['GET', 'POST'])]
+    #[Route('/disponibilite/edition/{id}', 'availability.edit', methods: ['GET', 'POST'])]
     public function edit(Availability $availability, Request $request, EntityManagerInterface $manager): Response
     {
         $form = $this->createForm(AvailabilityType::class, $availability);
@@ -171,7 +148,7 @@ class AvailabilityController extends AbstractController
         ]);
     }
 
-    #[Route('/availability/suppression/{id}', 'availability.delete', methods: ['GET'])]
+    #[Route('/disponibilite/suppression/{id}', 'availability.delete', methods: ['GET'])]
     public function delete(EntityManagerInterface $manager, Availability $availability) : Response 
     {
         $manager->remove($availability);
