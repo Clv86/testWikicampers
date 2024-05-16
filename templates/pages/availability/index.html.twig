@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container mt-4">
         {% if not availabilities is same as ([]) %}
-            <h1>Liste des véhicules</h1>
+            <h1>Liste des disponibilités</h1>
             <a href="{{ path('availability.new' )}}" class="btn btn-primary">Ajouter une disponibilité</a>
                 {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
