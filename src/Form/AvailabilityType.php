@@ -59,8 +59,7 @@ class AvailabilityType extends AbstractType
             ])
             ->add('status', ChoiceType::class, [
                 'choices' => [
-                    'Disponible' => 'Disponible',
-                    'Non disponible' => 'Non disponible'
+                    'Disponible' => 'Disponible'
                 ],
                  'attr' => [
                     'class' => 'btn btn-primary mt-4'
