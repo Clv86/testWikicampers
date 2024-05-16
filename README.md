@@ -5,7 +5,7 @@ Le site conçu sert à gérer les disponibilités de locations de véhicules, et
 
 J'ai utilisé uniquement le framework Symfony dans le cadre de ce test que j'ai ainsi pu découvrir. Le style n'étant pas le sujet du test et par souci de gain de temps, j'ai uniquement utilisé les templates twig ainsi qu'un thème bootstrap.
 
-La page d'accueil propose un accès par des Call-To-Action aux différentes fonctions implémentées. Même si le test ne le demandait pas, j'ai rajouté une page liste des véhicules afin d'avoir facilement de la visibilité sur les objets créés lors du développement. Les pages principales sont aussi accessibles dans la barre de navigation.
+La page d'accueil propose un accès par des boutons aux différentes fonctions implémentées. Même si le test ne le demandait pas, j'ai rajouté une page liste des véhicules afin d'avoir facilement de la visibilité sur les objets créés lors du développement. Les pages principales sont aussi accessibles dans la barre de navigation.
 
 Pour faciliter les tests, j'ai ajouté un fixture générant automatiqument 50 véhicules (voir la partie configuration).
 
