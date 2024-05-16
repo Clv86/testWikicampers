@@ -54,4 +54,4 @@ Le projet est lancé !
 
 Pour générer les fixtures de véhicules, entrez la commande : 
 
-### 'php bin/console doctrine:fixtures:load'
+### `php bin/console doctrine:fixtures:load`
